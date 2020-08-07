@@ -1,0 +1,23 @@
+<h1>Things</h1>
+<p>Here's a list of things: feel free to play with it.</p>
+<p *ngIf="!things"><em>Loading...</em></p>
+<table class='table table-striped' aria-labelledby="tableLabel" [hidden]="!things">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Currency</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let thing of things">
+      <td>{{ thing.id }}</td>
+      <td>{{ thing.name }}</td>
+      <td>{{ thing.value }}</td>
+      <td>{{ thing.currencyCode }}</td>
+      <td>{{ thing.categoryName }}</td>
+    </tr>
+  </tbody>
+</table>
