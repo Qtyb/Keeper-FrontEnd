@@ -10,21 +10,24 @@ import { HomeComponent } from './home/home.component';
 import { ThingsComponent } from './things/things.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
+import { CameraComponent } from './camera/camera.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    ThingsComponent
-  ],
+    ThingsComponent,
+     CameraComponent
+   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'things', component: ThingsComponent }
+      { path: 'things', component: ThingsComponent },
+      { path: 'camera', component: CameraComponent }
     ]),
     BrowserAnimationsModule,
     AngularMaterialModule
