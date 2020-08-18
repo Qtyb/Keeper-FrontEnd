@@ -8,9 +8,9 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ThingsComponent } from './things/things.component';
+import { CameraComponent } from './camera/camera.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
-import { CameraComponent } from './camera/camera.component';
 
 @NgModule({
   declarations: [	
@@ -18,7 +18,7 @@ import { CameraComponent } from './camera/camera.component';
     NavMenuComponent,
     HomeComponent,
     ThingsComponent,
-     CameraComponent
+    CameraComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
