@@ -1,16 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ThingsComponent } from './things/things.component';
 import { CameraComponent } from './camera/camera.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AngularMaterialModule } from './angular-material.module';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [	
@@ -18,20 +22,20 @@ import { AngularMaterialModule } from './angular-material.module';
     NavMenuComponent,
     HomeComponent,
     ThingsComponent,
-    CameraComponent
+    CameraComponent,
+    LoginComponent,
+    RegisterComponent,
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'things', component: ThingsComponent },
-      { path: 'camera', component: CameraComponent }
-    ]),
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    AppRoutingModule,
+    NgxSpinnerModule,
   ],
+  exports: [NgxSpinnerModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Inject, Injector } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
+import { AuthService } from '../core/authentication/auth.service';
 import { ThingListDto } from './thing';
 
 @Component({
@@ -13,12 +14,27 @@ export class ThingsComponent implements OnInit {
   public things: ThingListDto[];
 
   constructor(
+    private injector: Injector,
     private http: HttpClient,
     @Inject('BASE_URL') private baseUrl: string) { 
     }
 
   ngOnInit() {
-    this.http.get<ThingListDto[]>('http://localhost:7100'+ '/gateway/things')
+    const authService = this.injector.get(AuthService);
+    this.GetThings(authService.authorizationHeaderValue);
+  }
+
+  private GetThings(token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': token
+      })
+    };
+
+    console.log("THINGS REQUEST")
+    console.log(httpOptions)
+    this.http.get<ThingListDto[]>('http://localhost:7100'+ '/gateway/things', httpOptions)
       .subscribe(result => {
         this.things = result;
       }, error => console.error(error));
