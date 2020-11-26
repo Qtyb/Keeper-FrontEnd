@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,9 +15,10 @@ import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { ThingDetailComponent } from './thingDetail/thingDetail.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     NavMenuComponent,
     HomeComponent,
@@ -25,6 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     CameraComponent,
     LoginComponent,
     RegisterComponent,
+    ThingDetailComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
     AngularMaterialModule,
     AppRoutingModule,
     NgxSpinnerModule,
+    ReactiveFormsModule
   ],
   exports: [NgxSpinnerModule],
   providers: [],
