@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ThingDto } from './thingDto';
 import { UpdateThingDto } from './updateThingDto';
+import { CreateThingDto } from './createThingDto';
 
 @Component({
     selector: 'app-city-edit',
@@ -16,8 +17,10 @@ export class ThingDetailComponent {
     title: string;
     // the form model
     form: FormGroup;
-    // the city object to edit
+    // the city object to edit or create
     thing: ThingDto;
+
+    id?: number;
 
     constructor(
         private activatedRoute: ActivatedRoute,
@@ -37,35 +40,56 @@ export class ThingDetailComponent {
     }
 
     loadData() {
-        // retrieve the ID from the 'id' parameter
-        var id = +this.activatedRoute.snapshot.paramMap.get('id');
-        // fetch the city from the server
-        var url = 'http://localhost:7100'+ '/gateway/things/' + id;
-        this.http.get<ThingDto>(url).subscribe(result => {
-            this.thing = result;
-            this.title = "Edit - " + this.thing.name;
-            // update the form with the city value
-            this.form.patchValue(this.thing);
-        }, error => console.error(error));
+        this.id = +this.activatedRoute.snapshot.paramMap.get('id');
+        if(this.id){
+            var url = 'http://localhost:7100'+ '/gateway/things/' + this.id;
+            this.http.get<ThingDto>(url).subscribe(result => {
+                this.thing = result;
+                this.title = "Edit - " + this.thing.name;
+                
+                this.form.patchValue(this.thing);
+            }, error => console.error(error));
+        }
+        else{
+            this.title = "Create a new Thing";
+        }        
     }
 
     onSubmit() {
-        var url = 'http://localhost:7100' + '/gateway/things/' + this.thing.id;
+        if(this.id){
+            var url = 'http://localhost:7100' + '/gateway/things/' + this.thing.id;
+            var updatedThing :UpdateThingDto = {
+                name: this.form.get("name").value,
+                CategoryId: 1,
+                CurrencyId: 1,
+                description: this.thing.description,
+                value: +this.form.get("value").value
+            };
+            console.log(`Submit updatedThing: ${updatedThing} on url: ${url}`)
+    
+            this.http
+                .put<UpdateThingDto>(url, updatedThing)
+                .subscribe(result => {
+                    console.log("Thing " + this.thing.id + " has been updated.");
+                    this.router.navigate(['/things']);
+                }, error => console.log(error));
+        }
+        else{
+            var url = 'http://localhost:7100' + '/gateway/things';
+            var createThing :CreateThingDto = {
+                name: this.form.get("name").value,
+                CategoryId: 1,
+                CurrencyId: 1,
+                description: "",
+                value: +this.form.get("value").value
+            };
 
-        var updatedThing :UpdateThingDto = {
-            name: this.form.get("name").value,
-            CategoryId: 1,
-            CurrencyId: 1,
-            description: this.thing.description,
-            value: +this.form.get("value").value
-        };
-        console.log(`Submit updatedThing: ${updatedThing} on url: ${url}`)
-
-        this.http
-            .put<UpdateThingDto>(url, updatedThing)
-            .subscribe(result => {
-                console.log("Thing " + this.thing.id + " has been updated.");
-                this.router.navigate(['/things']);
-            }, error => console.log(error));
+            this.http
+                .post<CreateThingDto>(url, createThing)
+                .subscribe(result => {
+                    console.log("Thing " + createThing.name + " has been created.");
+                    this.router.navigate(['/things']);
+                }, error => console.log(error));
+        }        
     }
 }

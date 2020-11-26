@@ -1,5 +1,12 @@
 <h1>Things</h1>
 <p *ngIf="!things"><em>Loading...</em></p>
+<div class="commands text-right" *ngIf="things">
+  <button type="button"
+  [routerLink]="['/thing']"
+  class="btn btn-success">
+  New
+  </button>
+ </div>
 
 <table mat-table [dataSource]="things" class="mat-elevation-z8" [hidden]="!things">
   <!-- Id Column -->

@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'things', component: ThingsComponent },
   { path: 'thing/:id', component: ThingDetailComponent },
+  { path: 'thing', component: ThingDetailComponent },
   { path: 'camera', component: CameraComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
