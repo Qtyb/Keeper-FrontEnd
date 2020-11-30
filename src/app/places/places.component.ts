@@ -2,16 +2,16 @@ import { Component, OnInit, Inject, Injector } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { AuthService } from '../core/authentication/auth.service';
-import { ThingListDto } from './thing';
+import { PlaceListDto } from './place';
 
 @Component({
-  selector: 'app-things',
-  templateUrl: './things.component.html',
-  styleUrls: ['./things.component.css']
+  selector: 'app-places',
+  templateUrl: './places.component.html',
+  styleUrls: ['./places.component.css']
 })
-export class ThingsComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'name', 'value', 'currencyCode', 'categoryName'];
-  public things: ThingListDto[];
+export class PlacesComponent implements OnInit {
+  public displayedColumns: string[] = ['id', 'name', 'parentName'];
+  public places: PlaceListDto[];
 
   constructor(
     private injector: Injector,
@@ -21,20 +21,20 @@ export class ThingsComponent implements OnInit {
 
   ngOnInit() {
     const authService = this.injector.get(AuthService);
-    this.GetThings(authService.authorizationHeaderValue);
+    this.GetPlaces(authService.authorizationHeaderValue);
   }
 
-  private GetThings(token: string) {
+  private GetPlaces(token: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json',
         'Authorization': token
       })
     };
-    
-    this.http.get<ThingListDto[]>('http://localhost:7100'+ '/gateway/things', httpOptions)
+
+    this.http.get<PlaceListDto[]>('http://localhost:7100'+ '/gateway/places', httpOptions)
       .subscribe(result => {
-        this.things = result;
+        this.places = result;
       }, error => console.error(error));
   }
 

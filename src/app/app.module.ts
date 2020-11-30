@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ThingsComponent } from './things/things.component';
+import { PlacesComponent } from './places/places.component';
 import { CameraComponent } from './camera/camera.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
@@ -23,6 +24,7 @@ import { ThingDetailComponent } from './thingDetail/thingDetail.component';
     NavMenuComponent,
     HomeComponent,
     ThingsComponent,
+    PlacesComponent,
     CameraComponent,
     LoginComponent,
     RegisterComponent,
