@@ -8,20 +8,24 @@ import { AuthService } from '../../core/authentication/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit { 
+  authService: AuthService;
 
   constructor(
-    // private authService: AuthService, 
     private spinner: NgxSpinnerService,
     private injector: Injector,
-    ) { }    
-    
-    title = "Login";
-    
+    ){ 
+      this.authService = this.injector.get(AuthService)
+    }    
+        
     login() {     
       this.spinner.show();
-      const authService = this.injector.get(AuthService);
-      authService.login();
-    }   
+      this.authService.login();
+    }
+    
+    logout() {     
+      this.spinner.show();
+      this.authService.signout();
+    } 
 
     ngOnInit() {
     }

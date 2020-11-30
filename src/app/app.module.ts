@@ -10,13 +10,14 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ThingsComponent } from './things/things.component';
+import { ThingDetailComponent } from './thingDetail/thingDetail.component';
 import { PlacesComponent } from './places/places.component';
+import { PlaceDetailComponent } from './placeDetail/placeDetail.component';
 import { CameraComponent } from './camera/camera.component';
 import { LoginComponent } from './account/login/login.component';
 import { RegisterComponent } from './account/register/register.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { ThingDetailComponent } from './thingDetail/thingDetail.component';
 
 @NgModule({
   declarations: [		
@@ -28,7 +29,8 @@ import { ThingDetailComponent } from './thingDetail/thingDetail.component';
     CameraComponent,
     LoginComponent,
     RegisterComponent,
-    ThingDetailComponent
+    ThingDetailComponent,
+    PlaceDetailComponent
    ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { ThingsComponent } from './things/things.component';
 import { ThingDetailComponent } from './thingDetail/thingDetail.component';
 import { PlacesComponent } from './places/places.component';
+import { PlaceDetailComponent } from './placeDetail/placeDetail.component';
 
 
 const routes: Routes = [
@@ -16,6 +17,8 @@ const routes: Routes = [
   { path: 'thing/:id', component: ThingDetailComponent },
   { path: 'thing', component: ThingDetailComponent },
   { path: 'places', component: PlacesComponent },
+  { path: 'place/:id', component: PlaceDetailComponent },
+  { path: 'place', component: PlaceDetailComponent },
   { path: 'camera', component: CameraComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },

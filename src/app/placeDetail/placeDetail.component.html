@@ -1,6 +1,6 @@
-<div class="thing-edit">
+<div class="place-edit">
   <h1>{{title}}</h1>
-  <p *ngIf="this.id && !thing"><em>Loading...</em></p>
+  <p *ngIf="this.id && !place"><em>Loading...</em></p>
   <div class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <!--
@@ -26,9 +26,9 @@
  <div class="form-group" [ngClass]="{ 'has-error has-
  feedback' : hasError('name') }">
  -->
-      <label for="value">Value:</label>
+      <label for="description">Description:</label>
       <br />
-      <input type="text" id="value" formControlName="value" required placeholder="Value..." class="form-control" />
+      <input type="text" id="description" formControlName="description" required placeholder="Description..." class="form-control" />
       <!--
  <span *ngIf="hasError('value')"
  class="glyphicon glyphicon-remove form-control-
@@ -48,7 +48,7 @@
       <button *ngIf="!id" type="submit" (click)="onSubmit()" class="btn btn-success">
         Create
       </button>
-      <button type="submit" [routerLink]="['/things']" class="btn btn-default">
+      <button type="submit" [routerLink]="['/places']" class="btn btn-default">
         Cancel
       </button>
     </div>
