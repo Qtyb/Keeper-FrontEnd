@@ -21,6 +21,16 @@
   </div>
  -->
     </div>
+    <div class="form-group" *ngIf="places">
+      <label for="placeId">Place:</label>
+      <br />
+      <select id="placeId" class="form-control" formControlName="placeId">
+        <option value="">--- Select a place ---</option>
+        <option *ngFor="let place of this.places" [value]="place.id">
+          {{place.name}}
+        </option>
+      </select>
+    </div>
     <div class="form-group">
       <!--
  <div class="form-group" [ngClass]="{ 'has-error has-

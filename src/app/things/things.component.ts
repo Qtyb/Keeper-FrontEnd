@@ -10,7 +10,7 @@ import { ThingListDto } from './thing';
   styleUrls: ['./things.component.css']
 })
 export class ThingsComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'name', 'value', 'currencyCode', 'categoryName'];
+  public displayedColumns: string[] = ['id', 'name', 'value', 'placeName'];
   public things: ThingListDto[];
 
   constructor(
