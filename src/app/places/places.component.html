@@ -21,11 +21,6 @@
       <a [routerLink]="['/place', place.id]">{{place.name}}</a>
     </td>
   </ng-container>
-  <!-- Parent Name Column -->
-  <ng-container matColumnDef="parentName">
-    <th mat-header-cell *matHeaderCellDef>Parent Name</th>
-    <td mat-cell *matCellDef="let place">{{place.parentPlaceName}}</td>
-  </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

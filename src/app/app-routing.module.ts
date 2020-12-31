@@ -12,7 +12,7 @@ import { PlaceDetailComponent } from './placeDetail/placeDetail.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: '', component: LoginComponent, pathMatch: 'full' },
   { path: 'things', component: ThingsComponent },
   { path: 'thing/:id', component: ThingDetailComponent },
   { path: 'thing', component: ThingDetailComponent },

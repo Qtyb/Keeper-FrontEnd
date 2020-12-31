@@ -10,7 +10,7 @@ import { PlaceListDto } from './place';
   styleUrls: ['./places.component.css']
 })
 export class PlacesComponent implements OnInit {
-  public displayedColumns: string[] = ['id', 'name', 'parentName'];
+  public displayedColumns: string[] = ['id', 'name'];
   public places: PlaceListDto[];
 
   constructor(
